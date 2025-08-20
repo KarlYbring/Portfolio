@@ -7,36 +7,42 @@ Detta är min personliga portfolio (statisk HTML/CSS/JS) som visar projekt, kont
 - Kontakt: EmailJS eller mailto-fallback
 - Hämtning av publika GitHub‑repos via GitHub API
 
-## Teknisk stack
-- HTML, CSS, Vanilla JavaScript
-- EmailJS (client-side) för formulärsändning
-- Fungerar som statisk site (kan servas med vilken statisk host som helst)
+# Karl Ybring — Portfolio
+
+En statisk portfolio (HTML, CSS, JavaScript) som visar utvalda projekt, korta projektbeskrivningar och ett kontaktformulär.
+
+Detta repository innehåller endast min egen portfolio och är avsedd som demonstration av mitt arbete. Materialet i repot är personligt och inte avsett att återanvändas som en färdig mall av andra.
+
+## Vad projektet är
+- Enkel, statisk webbplats byggd med vanliga webbt tekniker.
+- Visar en startsida med hero, avsnitt för About, Projects och Contact.
+- Kontaktformulär använder EmailJS-klienten i webbläsaren med fallbacks om det behövs.
+
+## Teknisk överblick
+- HTML, CSS (enkel responsiv layout) och Vanilla JavaScript.
+- Hämtar valfria publika GitHub‑repos klient‑sidan (ingen serversida krävs).
 
 ## Kör lokalt (snabbt)
-1. Öppna en terminal/PowerShell i mappen `portfolio-site`.
-2. Kör en enkel lokal server (om du har Node.js):
-   ```powershell
-   npx http-server . -p 8000
-   ```
+Öppna en terminal i mappen `portfolio-site` och kör en enkel lokal server.
 
-## PowerShell (om du har Python installerat):
-```powershell
-cd 'C:\Users\KarlY\OneDrive\Skrivbord\Portfolio2025\portfolio-site'
+Med Node.js:
+
+```bash
+npx http-server . -p 8000
+```
+
+Med Python 3:
+
+```bash
 python -m http.server 8000
-# Öppna http://localhost:8000 i webbläsaren
 ```
 
-## Alternativt (PowerShell med .NET):
-```powershell
-cd 'C:\Users\KarlY\OneDrive\Skrivbord\Portfolio2025\portfolio-site'
-# Om du har Live Server i VS Code, tryck "Open with Live Server"
-```
+Öppna sedan: http://localhost:8000
 
-## Anpassningar
-- Replace the name in the header and the `mailto` address in `js/main.js`.
-- Update the GitHub username by changing `data-github-user` on `index.html` (body attribute). Default is `KarlYbring`.
+## Notera
+- Kontrollera att inga privata nycklar (.env) eller hemliga uppgifter finns i repot innan du delar länken publikt.
+- Detta repo är en personlig presentation — det finns inga licensuppmaningar här för att kopiera eller återanvända koden som helhet.
 
-## Nästa steg jag kan hjälpa med
-- Lägga till en Dockerfile och GitHub Actions (CI) för publicering
-- Konvertera till Next.js / Vercel‑optimerad site
-- Automatiskt generera projektkort från flera repo‑källor
+---
+
+Om du vill kan jag lägga till en kort "How to develop"-sektion eller en MIT‑licensfil om du vill att delar av koden ska vara fria att återanvända.
