@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Contact</title>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav">
+  <a href="index.html" class="logo">Your Name</a>
+      <ul>
+        <li><a href="index.html#home">HOME</a></li>
+        <li><a href="index.html#about">ABOUT</a></li>
+        <li><a href="index.html#projects">PROJECTS</a></li>
+        <li><a href="index.html#contact">CONTACT</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h1>Contact</h1>
+  <p>Send an email or link to LinkedIn. The form below is an example (not server‑driven).</p>
+    <form id="contact-form" onsubmit="return false;">
+  <label>Name
+<input type="text" name="name"></label>
+      <label>Email<input type="email" name="email"></label>
+  <label>Message<textarea name="message"></textarea></label>
+  <p><button class="btn" onclick="mailtoSubmit()">Send (mailto)</button></p>
+    </form>
+  </main>
+
+  <footer class="site-footer">
+  <p>© <span id="year"></span> — Replace with your name</p>
+  </footer>
+  <script src="js/main.js"></script>
+</body>
+</html>

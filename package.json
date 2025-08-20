@@ -1,0 +1,19 @@
+{
+  "name": "portfolio-site",
+  "version": "1.0.0",
+  "description": "Portfolio (statisk) - minimal mall",
+  "main": "index.js",
+  "scripts": {
+    "dev": "live-server --port=8000",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  },
+  "dependencies": {
+    "@emailjs/browser": "^4.4.1"
+  }
+}

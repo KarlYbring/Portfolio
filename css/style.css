@@ -1,0 +1,766 @@
+:root {
+	--bg: #ffffff;
+	--header-offset: 10px; /* change this to adjust how far sections sit below the header when jumped to */
+	--card: #ffffff;
+	--muted: #6b7280; /* gray-500 */
+	--accent: #7c3aed; /* purple */
+	--text: #111827; /* gray-900 */
+	--header-color: #111; /* headings */
+	--para-color: #333; /* paragraph text */
+	--font-heading: 'Source Sans 3', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+	--font-sans: 'Source Sans 3', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Box sizing */
+* {
+	box-sizing: border-box;
+}
+
+/* Page base */
+body {
+	margin: 0;
+	font-family: var(--font-sans);
+	font-weight: 500; /* use Source Sans 3 at 500 for body text */
+	background: var(--bg);
+	color: var(--para-color);
+	line-height: 1.5;
+}
+
+/* reserve space for the fixed header so content isn't hidden underneath */
+/* reduced from 72px to 64px to match slimmer header */
+body { padding-top: 64px; }
+
+/* ensure html/body fill the viewport and use the SVG as the page background */
+html, body { height: 100%; }
+body { min-height: 100vh; }
+body {
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center top;
+	background-color: #ffffff; /* fallback white */
+}
+
+/* Heading styles using the bulkier display font */
+h2, h3 {
+	font-family: var(--font-heading);
+	font-weight: 600; /* increased weight for headings */
+	font-size: 3rem; /* h2 */
+	margin: 0 0 0.5rem 0;
+	color: var(--header-color);
+	letter-spacing: 1px;
+}
+h1{
+	font-family: var(--font-heading);
+	font-weight: 700; /* headings kept heavier for contrast */
+	letter-spacing: 2px;
+	margin: 0 0 0.5rem 0;
+	color: var(--header-color);
+}
+
+/* Centered content container */
+.container {
+	max-width: 1100px;
+	margin: 0 auto;
+	padding: 0 28px;
+}
+
+/* Header / navbar */
+.site-header {
+	background: #ffffff;
+	color: var(--text);
+	position: fixed; /* header locked to viewport */
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 1000;
+	box-shadow: 0 6px 20px rgba(16, 24, 40, 0.06);
+	/* slimmer header: reduced vertical & horizontal padding */
+	padding: 0.8rem 3rem;
+
+}
+
+.nav {
+	display: flex;
+	align-items: center;
+	/* reduced nav padding so header is visually tighter */
+	padding: 8px 0;
+}
+
+.nav-avatar img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+}
+
+/* Circular avatar in the top-left of the header */
+.nav-avatar {
+	width: 44px;
+	height: 44px;
+	border-radius: 50%;
+	overflow: hidden;
+	box-shadow: 0 6px 16px rgba(2,6,23,0.16);
+	background: linear-gradient(135deg, var(--accent), #7c3aed);
+}
+.nav-left .logo { margin-left: 12px; }
+
+/* Layout helpers for the header navigation */
+.nav-left {
+	display: flex;
+ 	align-items: center;
+ 	gap: 12px;
+}
+
+.nav ul {
+ 	list-style: none;
+ 	margin: 0;
+ 	padding: 0;
+ 	display: flex;
+ 	gap: 30px;
+ 	margin-left: auto; /* push the menu to the right */
+ 	align-items: center;
+}
+
+.nav ul li a {
+ 	text-decoration: none;
+ 	color: inherit;
+ 	transition: color 200ms ease;
+}
+
+/* Make nav links and logo visually heavier */
+.nav ul li a {
+	font-weight: 600;
+	font-size: 1.1rem;
+	letter-spacing: 1px;
+}
+
+.logo {
+	font-weight: 700;
+	font-size: 1.1rem;
+	text-decoration: none;
+	color: inherit;
+	letter-spacing: 1px;
+	transition: color 200ms ease;
+	cursor: pointer;
+}
+
+/* hover: purple accent on logo and nav links */
+.nav ul li a:hover,
+.logo:hover {
+    color: var(--accent);
+}
+.nav-container{
+	display: flex;
+  align-items: center;
+  gap: 12px;
+  justify-content: space-between;
+}
+
+/* Hero / top section */
+ .hero {
+ 	position: relative;
+ 	min-height: 92vh;
+ 	display: flex;
+ 	align-items: center;
+ 	/* use SVG as background; ensure white shows through transparent areas */
+ 	background-image: url('../assets/trianglify-lowres.png');
+ 	background-size: cover;
+ 	background-repeat: no-repeat;
+ 	background-position: center top;
+ 	background-color: #ffffff; /* explicit white fallback */
+ 	padding: 28px 0;
+ }
+
+ /* overlay to improve text contrast over the SVG */
+ .hero::before {
+     /* overlay removed so white backgrounds remain white */
+     content: '';
+     position: absolute;
+     inset: 0;
+     background: none;
+     pointer-events: none;
+ }
+
+.hero-inner {
+	display: flex;
+	gap: 48px;
+	align-items: center;
+	max-width: 1100px;
+	margin: 0 auto;
+	padding: 40px 28px;
+	justify-content: center; /* center content horizontally */
+}
+
+.hero-content {
+	max-width: 640px;
+	flex: 1;
+	/* center the heading, lead and CTA consistently */
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+/* Larger, more prominent hero typography */
+.hero .hero-content h1 {
+	font-size: clamp(2rem, 5.5vw, 3.6rem);
+	line-height: 1.05;
+	font-weight: 800;
+	color: var(--header-color);
+}
+
+.hero .hero-content .lead {
+	font-size: 1.125rem;
+	color: var(--para-color);
+}
+
+.lead {
+	color: var(--para-color);
+	font-size: 1.05rem;
+	margin-top: 6px;
+}
+
+.avatar {
+	width: 160px;
+	height: 160px;
+	border-radius: 50%;
+	background: linear-gradient(135deg, var(--accent), #7c3aed);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: white;
+	font-weight: 700;
+	font-size: 28px;
+	box-shadow: 0 8px 24px rgba(15, 20, 30, 0.08);
+}
+
+.initials {
+	font-family: Inter, "Segoe UI", Arial, sans-serif;
+}
+
+/* Social icon rail */
+.social-bar {
+ 	position: absolute;
+ 	left: 18px;
+ 	top: 50%;
+ 	transform: translateY(-50%);
+ 	display: flex;
+ 	flex-direction: column;
+ 	gap: 14px;
+ 	background: rgba(255, 255, 255, 0.02);
+ 	padding: 10px;
+ 	border-radius: 8px;
+}
+
+.social-bar .icon {
+ 	display: flex;
+ 	width: 56px;
+ 	height: 56px;
+ 	background: var(--card);
+ 	color: #000; /* icons are black by default */
+ 	border-radius: 10px;
+ 	align-items: center;
+ 	justify-content: center;
+ 	text-decoration: none;
+ 	box-shadow: 0 8px 22px rgba(2, 6, 23, 0.45);
+ 	transition: color 180ms ease, transform 180ms ease; /* smooth color + lift */
+}
+
+.social-bar .icon svg {
+ 	opacity: 0.98;
+ 	width: 28px;
+ 	height: 28px;
+ 	/* make SVG follow the current color */
+ 	fill: currentColor;
+ 	stroke: none;
+}
+
+/* Hover: icons become accent (purple) and lift slightly */
+.social-bar .icon:hover {
+	color: var(--accent);
+	transform: translateY(-1px);
+}
+.site-header.sticky {
+	/* keep header opaque when scrolled */
+	background: #ffffff;
+	backdrop-filter: none;
+	box-shadow: 0 6px 18px rgba(2, 6, 23, 0.12);
+}
+
+.scroll-indicator {
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	bottom: 20px;
+	color: var(--muted);
+	font-size: 22px;
+	pointer-events: none; /* decorative only */
+	will-change: transform, opacity;
+	opacity: 0.98;
+	animation: scroll-bounce 1.8s cubic-bezier(.2,.8,.2,1) infinite;
+}
+
+/* keep inline SVG arrow the same size as the glyph (1em) and use currentColor */
+.scroll-indicator .scroll-arrow { width: 1em; height: 1em; display: inline-block; }
+.scroll-indicator .scroll-arrow path { stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+@keyframes scroll-bounce {
+	0% { transform: translateX(-50%) translateY(0); opacity: 0.98; }
+	50% { transform: translateX(-50%) translateY(12px); opacity: 0.6; }
+	100% { transform: translateX(-50%) translateY(0); opacity: 0.98; }
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+	.scroll-indicator { animation: none; }
+}
+
+/* (scroll indicator animation defined earlier) */
+
+.btn {
+	background: var(--accent);
+	color: white;
+	border-radius: 0px;
+	text-decoration: none;
+	display: inline-block; /* ensure transforms animate smoothly */
+	align-items: center;
+	font-size: 1.5rem;
+	font-weight: 600;
+	letter-spacing: 1px;
+}
+
+.btn {
+	transition: transform 300ms cubic-bezier(.2,.9,.3,1), box-shadow 300ms ease, filter 300ms ease;
+	will-change: transform;
+}
+.btn:active {
+	transform: translateY(1px) scale(0.998);
+	filter: brightness(0.98);
+}
+
+/* simple hover uplift: move button up slightly on hover/focus */
+.btn:hover,
+.btn:focus,
+.btn:focus-visible {
+	transform: translateY(-2px);
+}
+
+.btn-sm:hover,
+.btn-sm:focus,
+.btn-sm:focus-visible {
+	transform: translateY(-2px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.btn:hover, .btn:focus, .btn-sm:hover, .btn-sm:focus { transform: none; }
+}
+
+/* Center the primary CTA inside the hero (horizontal center of viewport).
+   It sits above the social rail (higher z-index). On small screens it returns to normal flow. */
+.hero .btn {
+	/* keep the CTA in normal flow so it sits centered under the lead text */
+	display: inline-block;
+	margin-top: 18px;
+	padding: 10px 60px;
+	border-radius: 4px;
+	position: relative;
+	z-index: 90; /* ensure it's above the social rail if overlapping */
+}
+
+@media (max-width: 800px) {
+	.hero .btn {
+		position: static;
+		transform: none;
+		margin: 18px auto 0;
+		display: inline-block;
+	}
+}
+
+.card-grid {
+	display: grid;
+	grid-template-columns: 1fr; /* single column by default; cards handle their internal layout */
+	gap: 18px;
+
+/* Contact status inline message */
+.contact-status{
+	margin-top:10px;
+	font-size:0.95rem;
+	padding:8px 12px;
+	border-radius:6px;
+	display:inline-block;
+}
+.contact-status.sending{ background: rgba(0,0,0,0.06); color:var(--muted); }
+.contact-status.success{ background: #e6ffed; color: #067a30; border:1px solid #b7f0c7; }
+.contact-status.error{ background: #ffecec; color: #8a1f1f; border:1px solid #f1c2c2; }
+}
+
+.card {
+	background: rgba(255, 255, 255, 0.03);
+	border-radius: 8px;
+	overflow: visible;
+	display: block;
+	padding: 36px 0;
+	box-sizing: border-box;
+}
+
+
+/* Project two-column grid similar to About */
+
+.project-grid {
+	display: grid;
+	grid-template-columns: 1fr 360px; /* wide left column for info, narrow right column for title/links */
+	gap: 36px; /* increased gap to give right column more breathing room */
+	align-items: start;
+	max-width: 1100px; /* match About section for symmetry */
+	margin: 0 auto;
+	padding: 24px 0; /* remove horizontal padding so column paddings control spacing */
+	position: relative; /* enable centered divider pseudo-element */
+}
+.proj-left {
+	padding: 18px; /* match About column padding */
+	padding-top: 0; /* normalize so heading aligns with right column */
+}
+.proj-left h3 { margin: 0 0 12px 0; font-size: 1.05rem; font-weight: 700; }
+.proj-right {
+	text-align: left;
+	padding: 18px; /* match About column padding */
+	padding-top: 0; /* normalize so heading aligns with left column */
+}
+.project-desc p, .proj-left p { margin: 0 0 12px 0; color: var(--para-color); }
+.proj-right h3 { margin: 0 0 12px 0; font-size: 1.05rem; font-weight: 700; }
+
+.card-media .project-screenshot {
+	width: 100%;
+	aspect-ratio: 16 / 10; /* laptop-like aspect */
+	object-fit: cover;
+	display: block;
+	border-radius: 14px;
+	box-shadow: 0 46px 120px rgba(2,6,23,0.36);
+	border: 2px solid rgba(2,6,23,0.06);
+}
+
+/* Small button styles used inside project cards for Source / Live links */
+.btn-sm {
+	display: inline-block;
+	padding: 8px 12px;
+	background: var(--accent);
+	color: #fff;
+	text-decoration: none;
+	border-radius: 6px;
+	font-weight: 700;
+	font-size: 0.9rem;
+}
+.btn-sm { transition: transform 600ms cubic-bezier(.2,.9,.3,1), box-shadow 600ms ease, filter 500ms ease; }
+.btn-sm:active { transform: translateY(1px) scale(0.998); filter: brightness(0.96); }
+.btn-sm.outline {
+	background: transparent;
+	color: var(--accent);
+	border: 2px solid var(--accent);
+}
+.project-screenshot {
+	max-width: 100%;
+	height: auto;
+	border-radius: 6px;
+	display: block;
+	margin-top: 8px;
+}
+
+#repos .repo {
+	padding: 10px;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.repo h3 {
+	margin: 0 0 6px 0;
+}
+
+.repo .meta {
+	color: var(--muted);
+	font-size: 0.9rem;
+}
+
+.site-footer {
+	text-align: center;
+	padding: 20px;
+	color: var(--muted);
+}
+
+label {
+	display: block;
+	margin: 8px 0;
+}
+
+input,
+textarea {
+	width: 100%;
+	padding: 8px;
+	border-radius: 6px;
+	border: 1px solid rgba(0, 0, 0, 0.06);
+	background: transparent;
+	color: var(--para-color);
+}
+
+/* Contact form card to visually match project/skill cards */
+.contact-card {
+	width: 100%;
+	max-width: 520px;
+	background: #fff;
+	border-radius: 5px;
+	padding: 34px 28px;
+	box-shadow: 0 12px 40px rgba(124,58,237,0.08);
+	border: 6px solid rgba(124, 58, 237, 0.158);
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
+}
+
+.input-row{
+	display: flex;
+	gap: 12px;
+	align-items: center;
+	background: #f3f2f6;
+	padding: 12px 14px;
+	border-radius: 5px; /* pill */
+}
+.input-icon{ color: rgba(0,0,0,0.35); display:inline-flex; align-items:center; justify-content:center; width:28px; }
+.input-row input, .input-row textarea{ background: transparent; border: none; outline: none; font-size:0.95rem; color:var(--para-color); width:100%; }
+.input-row textarea{ min-height:120px; max-height:120px; border-radius:5px; padding:12px; background:#f3f2f6; resize:none; font-family: var(--font-sans); }
+
+.contact-card .btn{
+	width:100%;
+	background: var(--accent);
+	color: #fff;
+	border-radius: 5px;
+	padding: 14px 20px;
+	border: none;
+	font-weight:700;
+	font-size:1rem;
+}
+.contact-card .btn { transition: transform 300ms cubic-bezier(.2,.9,.3,1), box-shadow 300ms ease, filter 300ms ease; cursor: pointer; }
+.contact-card .btn:active { transform: translateY(1px) scale(0.998); filter: brightness(0.96); }
+
+.contact-card .btn:hover{ filter:brightness(0.95); }
+
+@media (max-width: 520px){
+	.contact-card{ padding:22px; }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+	.nav ul {
+		display: none;
+	}
+}
+
+@media (max-width: 800px) {
+	.hero-inner {
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+	}
+
+			/* Stack card media above body on small screens */
+			.card { flex-direction: column; min-height: auto; }
+			.card-media { flex: 0 0 auto; width: 100%; padding: 18px; }
+			.card-body { flex: 1 1 auto; padding: 12px; }
+			.card-media .project-screenshot { aspect-ratio: 16 / 9; }
+
+	.hero-content {
+		text-align: center;
+	}
+
+	.social-bar {
+		left: 8px;
+	}
+
+	.nav ul {
+		display: none;
+	}
+}
+
+/* Center About, Projects and Contact content like the hero */
+section#about,
+section#projects,
+section#contact {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	gap: 18px;
+}
+
+/* Ensure About fills the viewport (minus the fixed header) so Projects stays below the fold */
+section#about {
+	min-height: calc(100vh - 72px);
+	padding-top: 28px; /* small breathing room below the header */
+	box-sizing: border-box;
+}
+
+/* About split layout */
+.about-grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr; /* equal-width columns */
+	gap: 32px;
+	align-items: start;
+	width: 100%;
+	max-width: 1100px;
+	position: relative;
+}
+.about-left {
+	text-align: left;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	padding: 18px; /* match right column so headings align */
+}
+.about-right {
+	text-align: left;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	background: rgba(255,255,255,0.02);
+	padding: 18px;
+	border-radius: 8px;
+}
+
+/* Links inside the about area use the accent color */
+.about-left a, .about-right a {
+	color: var(--accent);
+	text-decoration: none;
+	font-weight: 600;
+}
+.about-left a:hover, .about-right a:hover { text-decoration: underline; }
+.skills-list {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+}
+.skill {
+	display: inline-block;
+	background: rgba(124, 58, 237, 0.322);
+	color: #333;
+	padding: 8px 10px;
+	border-radius: 4px;
+	font-weight: 600;
+	font-size: 0.95rem;
+}
+
+@media (max-width: 880px) {
+	.about-grid { grid-template-columns: 1fr; }
+	.about-left, .about-right { text-align: center; }
+	.about-right { margin-top: 14px; padding-left: 0; }
+}
+
+@media (max-width: 880px) {
+	.project-grid { gap: 20px; }
+	.proj-right { padding-left: 0; }
+	.proj-left, .proj-right { padding: 12px; }
+}
+
+/* Make headings align and look consistent */
+.about-left h3, .about-right h3 {
+	margin: 0 0 12px 0;
+	font-size: 1.05rem;
+	font-weight: 700;
+}
+
+/* Divider between the two project columns (match About's divider) */
+.project-grid::before {
+	content: '';
+	position: absolute;
+	left: 50%;
+	top: 0;
+	bottom: 0;
+	width: 1px;
+	background: rgba(2,6,23,0.07);
+	transform: translateX(-50%);
+	z-index: 2;
+	pointer-events: none;
+}
+
+@media (max-width: 880px) {
+    .project-grid::before { display: none; }
+}
+
+/* Keep lists and project cards readable by constraining width and centering them */
+section#about ul,
+section#projects .card-grid {
+	max-width: 760px;
+	width: 100%;
+	margin: 0 auto;
+	text-align: left; /* keep list items left-aligned for readability */
+}
+
+/* Make anchor targets sit below the fixed header by default; controlled by --header-offset */
+section[id], h1[id], [id] {
+	scroll-margin-top: calc(var(--header-offset) + 12px);
+}
+
+/* Divider between the two about columns (only inside the about section) */
+.about-grid::before {
+	content: '';
+	position: absolute;
+	left: 50%;
+	top: 0;
+	bottom: 0;
+	width: 1px;
+	background: rgba(2,6,23,0.07);
+	transform: translateX(-50%);
+	z-index: 2;
+	pointer-events: none;
+}
+
+@media (max-width: 880px) {
+	.about-grid::before { display: none; }
+}
+
+/* Thin purple underline for the About heading (matches button accent) */
+section#about > h2 {
+	position: relative;
+	padding-bottom: 8px;
+	margin-bottom: 12px;
+}
+/* Small underline for Projects heading to visually match About */
+section#projects > h2 {
+	position: relative;
+	padding-bottom: 8px;
+	margin-bottom: 12px;
+}
+section#projects > h2::after {
+	content: "";
+	display: block;
+	width: 5.5rem;
+	height: 4px;
+	background: var(--accent);
+	margin: 6px auto 0;
+	border-radius: 2px;
+}
+section#about > h2::after {
+	content: "";
+	display: block;
+	width: 5.5rem; /* small centered line */
+	height: 4px;
+	background: var(--accent);
+	margin: 6px auto 0;
+	border-radius: 2px;
+}
+
+/* Contact heading should match About/Projects */
+section#contact > h1 {
+	position: relative;
+	padding-bottom: 8px;
+	margin-bottom: 12px;
+	font-family: var(--font-heading);
+	font-weight: 600;
+	font-size: 3rem;
+	color: var(--header-color);
+}
+section#contact > h1::after {
+	content: "";
+	display: block;
+	width: 5.5rem;
+	height: 4px;
+	background: var(--accent);
+	margin: 6px auto 0;
+	border-radius: 2px;
+}
