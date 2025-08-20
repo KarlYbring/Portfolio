@@ -1,8 +1,13 @@
+# .gitignore (för ditt statiska site-projekt)
 node_modules/
-.DS_Store
-.env
 dist/
-coverage/
-.vscode/
+build/
+.env
 *.log
+.DS_Store
+Thumbs.db
+.vscode/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
