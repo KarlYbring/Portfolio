@@ -181,6 +181,37 @@
   // Run on pages where applicable
   if(document.getElementById('repos')) loadGithubRepos();
 
+  // Mobile nav toggle logic
+  (function(){
+    const toggle = document.querySelector('.nav-toggle');
+    const navList = document.getElementById('site-navigation');
+    if(!toggle || !navList) return;
+
+    function setOpen(open){
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      if(open) navList.classList.add('mobile-open'); else navList.classList.remove('mobile-open');
+    }
+
+    toggle.addEventListener('click', function(e){
+      const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+      setOpen(!isOpen);
+    });
+
+    // Close when clicking outside
+    document.addEventListener('click', function(e){
+      if(!navList.classList.contains('mobile-open')) return;
+      if(e.target === toggle || toggle.contains(e.target)) return;
+      if(e.target === navList || navList.contains(e.target)) return;
+      setOpen(false);
+    });
+
+    // Close on escape
+    document.addEventListener('keydown', function(e){ if(e.key === 'Escape') setOpen(false); });
+
+    // Close and remove mobile class when resizing to large screens
+    window.addEventListener('resize', function(){ if(window.innerWidth > 600) setOpen(false); });
+  })();
+
   // Sticky header on scroll
   (function(){
     const header = document.querySelector('.site-header');

@@ -144,6 +144,51 @@ h1{
 	cursor: pointer;
 }
 
+/* Hamburger / mobile nav toggle */
+.nav-toggle{
+	display: none; /* shown on small screens via media query */
+	background: transparent;
+	border: none;
+	margin-left: auto;
+	cursor: pointer;
+	padding: 8px;
+}
+.nav-toggle:focus{ outline: 2px solid rgba(124,58,237,0.25); border-radius:6px; }
+.nav-toggle .hamburger{
+	display:block;
+	width: 22px;
+	height: 2px;
+	background: var(--text);
+	position: relative;
+}
+.nav-toggle .hamburger::before,
+.nav-toggle .hamburger::after{
+	content: '';
+	position: absolute;
+	left: 0;
+	width: 22px;
+	height: 2px;
+	background: var(--text);
+}
+.nav-toggle .hamburger::before{ top: -7px; }
+.nav-toggle .hamburger::after{ top: 7px; }
+
+/* Mobile menu dropdown styles */
+.nav ul.mobile-open{
+	display: block;
+	position: absolute;
+	right: 16px;
+	top: calc(100% + 8px);
+	background: #fff;
+	box-shadow: 0 12px 40px rgba(2,6,23,0.08);
+	border-radius: 10px;
+	padding: 12px 16px;
+	width: calc(100% - 48px);
+	max-width: 320px;
+}
+.nav ul.mobile-open li{ display: block; padding: 8px 0; }
+.nav ul.mobile-open li a{ display: block; }
+
 /* hover: purple accent on logo and nav links */
 .nav ul li a:hover,
 .logo:hover {
@@ -159,14 +204,15 @@ h1{
 /* Hero / top section */
  .hero {
  	position: relative;
- 	min-height: 92vh;
+ 	min-height: 93vh;
  	display: flex;
  	align-items: center;
  	/* use SVG as background; ensure white shows through transparent areas */
- 	background-image: url('../assets/trianglify-lowres.png');
- 	background-size: cover;
- 	background-repeat: no-repeat;
- 	background-position: center top;
+	background-image: url('../assets/trianglify-lowres.png');
+	background-size: cover; /* always cover the hero element */
+	background-repeat: no-repeat;
+	background-position: center center; /* center the image so edges are filled on small devices */
+	width: 100%;
  	background-color: #ffffff; /* explicit white fallback */
  	padding: 28px 0;
  }
@@ -550,6 +596,7 @@ textarea {
 	.nav ul {
 		display: none;
 	}
+	.nav-toggle{ display: block; }
 }
 
 @media (max-width: 800px) {
@@ -557,6 +604,15 @@ textarea {
 		flex-direction: column;
 		align-items: center;
 		text-align: center;
+	}
+
+	/* make sure the hero inner area uses the full width on small screens so the
+	   background image is visible to the edges and content sits centered */
+	.hero-inner, .container {
+		width: 100%;
+		max-width: 100%;
+		padding-left: 18px;
+		padding-right: 18px;
 	}
 
 			/* Stack card media above body on small screens */
@@ -569,8 +625,27 @@ textarea {
 		text-align: center;
 	}
 
+	/* ensure headline and primary CTA are centered and don't hug the edges */
+	.hero .hero-content h1 { text-align: center; margin-left: 0; margin-right: 0; }
+	.hero .btn { margin-left: auto; margin-right: auto; }
+
 	.social-bar {
-		left: 8px;
+		left: 12px;
+		/* place the social rail near the bottom-left on small screens so it doesn't
+		   overlap the hero headline / CTA */
+		top: auto;
+		bottom: 16px;
+		transform: none;
+		flex-direction: row; /* show icons horizontally on mobile */
+		gap: 10px;
+		padding: 8px;
+	}
+
+	/* slightly smaller icon blocks on mobile so they don't visually dominate */
+	.social-bar .icon {
+		width: 48px;
+		height: 48px;
+		border-radius: 10px;
 	}
 
 	.nav ul {
@@ -652,9 +727,83 @@ section#about {
 }
 
 @media (max-width: 880px) {
-	.project-grid { gap: 20px; }
-	.proj-right { padding-left: 0; }
+	/* Use a compact two-column grid on narrow screens so the left/right
+	   information for each project stays visually paired. For very small
+	   phones we fall back to a single column to preserve readability. */
+	.project-grid {
+		grid-template-columns: 1fr 1fr; /* left and right side-by-side */
+		gap: 12px;
+		align-items: start;
+		padding: 12px 0;
+	}
+
+	/* Tidy the card visuals on small screens so each project reads as a
+	   single grouped unit */
+	.card {
+		padding: 18px;
+		border-radius: 10px;
+		background: rgba(255,255,255,0.02);
+		border: none; /* no border here so iPad/tablets remain borderless */
+		box-shadow: none;
+	}
+
+	.proj-left, .proj-right {
+		padding: 12px;
+	}
+
+	.proj-right {
+		text-align: left;
+		padding-left: 14px;
+		border-left: 1px solid rgba(2,6,23,0.04); /* subtle separator */
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+
+	.proj-right h3 { margin-bottom: 8px; }
+
+	/* Hide the vertical center divider used on wide layouts */
+	.project-grid::before { display: none; }
+}
+
+@media (max-width: 520px) {
+	/* Very small phones: stack vertically for legibility */
+	.project-grid { grid-template-columns: 1fr; }
+	.proj-right { text-align: center; border-left: none; padding-left: 0; }
 	.proj-left, .proj-right { padding: 12px; }
+
+	/* Show subtle borders only on very small screens where items stack */
+	.card {
+		border: 1px solid rgba(2,6,23,0.06);
+		border-radius: 10px;
+		background: rgba(255,255,255,0.02);
+	}
+
+	.card + .card { margin-top: 14px; }
+}
+
+/* iOS-only: show subtle card borders / separators when content stacks vertically
+   This targets WebKit-based touch browsers (iPhone/iPad Safari) and only applies
+   on very small screens where the project layout is stacked vertically. */
+/* iOS fallback preserved but not required: modern Safari will respect the rules above */
+
+/* Mobile-only small divider under the Live demo / Source buttons to match
+	 the subtle divider used elsewhere. Appears when projects are stacked. */
+@media (max-width: 880px) {
+	.proj-right p {
+		position: relative;
+		padding-bottom: 8px;
+	}
+	.proj-right p::after{
+		content: "";
+		display: block;
+		width: 8rem; /* longer on mobile */
+		height: 2px;  /* slightly thicker but keep subtle */
+		background: rgba(2,6,23,0.07); /* keep same gray tone */
+		margin: 12px auto 0;
+		border-radius: 2px;
+		opacity: 1;
+	}
 }
 
 /* Make headings align and look consistent */
