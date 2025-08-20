@@ -1,0 +1,16 @@
+{
+  "name": "portfolio2025",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npm --prefix ./portfolio-site run dev",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  }
+}
