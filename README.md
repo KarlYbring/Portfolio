@@ -22,27 +22,4 @@ Detta repository innehåller endast min egen portfolio och är avsedd som demons
 - HTML, CSS (enkel responsiv layout) och Vanilla JavaScript.
 - Hämtar valfria publika GitHub‑repos klient‑sidan (ingen serversida krävs).
 
-## Kör lokalt (snabbt)
-Öppna en terminal i mappen `portfolio-site` och kör en enkel lokal server.
-
-Med Node.js:
-
-```bash
-npx http-server . -p 8000
-```
-
-Med Python 3:
-
-```bash
-python -m http.server 8000
-```
-
-Öppna sedan: http://localhost:8000
-
-## Notera
-- Kontrollera att inga privata nycklar (.env) eller hemliga uppgifter finns i repot innan du delar länken publikt.
-- Detta repo är en personlig presentation — det finns inga licensuppmaningar här för att kopiera eller återanvända koden som helhet.
-
----
-
-Om du vill kan jag lägga till en kort "How to develop"-sektion eller en MIT‑licensfil om du vill att delar av koden ska vara fria att återanvända.
+https://karlybring.netlify.app/
