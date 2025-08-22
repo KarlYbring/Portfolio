@@ -1,1 +1,13 @@
-node_modules/\ndist/\n.vs/\n*.user\n*.suo\n*.log\n*.mdf\n*.ldf\n*.lnk\n*.pdf\n*.png\n*.jpg\n*.webp\n*.svg\n*.exe\n*.zip\n*.7z\n*.tar\n*.gz\n.DS_Store\n*.db\n*.sqlite\n*.history\n*.bak\n*.tmp\n.env\n
+node_modules/
+dist/
+.vs/
+*.user
+*.suo
+*.mdf
+*.ldf
+*.log
+*.png
+*.jpg
+*.pdf
+.DS_Store
+.env
