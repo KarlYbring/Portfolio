@@ -1,0 +1,49 @@
+:root{
+  /* Accent - välj en av nedan */
+  --accent: #7C3AED;   /* REK: lila */
+  --accent-600: #5B21B6;
+  /* --accent: #0F1724; --accent-600: #041124;  (navy alternativ) */
+  /* --accent: #FF6B6B; --accent-600: #E85A5A;  (korall alternativ) */
+
+  --btn-radius: 8px;
+  --btn-padding: 10px 16px;
+}
+
+/* Primär CTA */
+.btn--primary {
+  background: var(--accent);
+  color: #fff;
+  padding: var(--btn-padding);
+  border-radius: var(--btn-radius);
+  display: inline-block;
+  text-decoration: none;
+  font-weight: 700;
+  box-shadow: 0 8px 20px rgba(12,16,40,0.08);
+  transition: transform .12s ease, box-shadow .12s ease, background .12s ease;
+}
+.btn--primary:hover,
+.btn--primary:focus {
+  background: var(--accent-600);
+  transform: translateY(-2px);
+  outline: none;
+  box-shadow: 0 12px 28px rgba(12,16,40,0.12);
+}
+
+/* Sekundär: vit knapp med accent‑kant */
+.btn--ghost {
+  background: #fff;
+  color: var(--accent);
+  padding: var(--btn-padding);
+  border-radius: var(--btn-radius);
+  border: 2px solid rgba(124,58,237,0.08);
+  font-weight: 600;
+}
+.btn--ghost:hover {
+  border-color: rgba(124,58,237,0.18);
+  box-shadow: 0 8px 18px rgba(12,16,40,0.06);
+}
+
+/* Om du använder vit text direkt på hero: gör en lätt text‑shadow för läsbarhet */
+.hero h1, .hero .lead {
+  text-shadow: 0 2px 10px rgba(0,0,0,0.06);
+}
