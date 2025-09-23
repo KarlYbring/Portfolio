@@ -44,28 +44,26 @@
 
   <div class="hero-content">
           <h1>Hi, I'M KARL YBRING</h1>
-          <p class="lead">I build APIs, databases and scalable systems. Here I showcase projects, code and demos.</p>
+          <p class="lead">Aspiring software engineer, eager to create scalable and impactful digital solutions.</p>
           <p><a class="btn" href="#projects">PROJECTS</a></p>
         </div>
 
       </div>
   <div class="scroll-indicator" aria-hidden="true">
-    <!-- modern arrow sized to 1em so it doesn't change layout -->
     <svg class="scroll-arrow" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
       <path d="M6 9l6 6 6-6" />
     </svg>
   </div>
     </section>
 
-    <!-- About section (now on the same page) -->
     <section id="about" class="container" style="padding:60px 20px;">
       <h2>ABOUT ME</h2>
       <p>Here you will find more information about me, what I do, and my current skills mostly in terms of programming and technology</p>
         <div class="about-grid">
           <div class="about-left">
             <h3>GET TO KNOW ME</h3>
-            <p>Hej! Jag studerar Webbutveckling .NET och har ett intresse för att bygga moderna och användarvänliga webbapplikationer. Jag har erfarenhet inom både frontend (HTML, CSS, JavaScript, React) och backend (.NET, C#, SQL), och tycker om att arbeta med hela processen – från idé till färdig produkt.</p>
-            <p>Vill du veta mer eller se mina projekt? Kolla gärna in min <a href="https://github.com/KarlYbring" target="_blank" rel="noopener noreferrer">GitHub</a> eller följ mig på <a href="https://www.linkedin.com/in/karl-ybring-309400331/" target="_blank" rel="noopener noreferrer">LinkedIn</a>.</p>
+           <p>Hello! I'm a Web developer and I have a passion for building modern and user-friendly web applications. I have experience in both frontend (HTML, CSS, JavaScript, React) and backend (.NET, C#, SQL), and I enjoy working with the entire process from idea to finished product.</p>
+            <p>Want to know more or see my projects? Feel free to check out my <a href="https://github.com/KarlYbring" target="_blank" rel="noopener noreferrer">GitHub</a> or connect with me on <a href="https://www.linkedin.com/in/karl-ybring-309400331/" target="_blank" rel="noopener noreferrer">LinkedIn</a>.</p>
           </div>
           <aside class="about-right">
             <h3>SKILLS</h3>
@@ -77,22 +75,22 @@
               <span class="skill">Docker</span>
               <span class="skill">JavaScript</span>
               <span class="skill">React</span>
-              <span class="skill">HTML &amp; CSS</span>
+              <span class="skill">HTML</span>
               <span class="skill">Git / GitHub</span>
               <span class="skill">CI/CD</span>
               <span class="skill">CSS</span>
+              <span class="skill">CMS</span>
+              <span class="skill">DevOps</span>
             </div>
           </aside>
         </div>
     </section>
 
-    <!-- Projects section -->
     <section id="projects" class="container" style="padding:60px 20px;">
       <h2>PROJECTS</h2>
       <section id="manual-projects">
         <div class="card-grid">
 
-          <!-- New project card: This site (portfolio) -->
           <article class="card">
             <div class="project-grid">
               <div class="proj-left">
@@ -127,7 +125,7 @@
     </aside>
   </div>
 </article>
-          <!-- Trivia Time project card -->
+
           <article class="card">
   <div class="project-grid">
     <div class="proj-left">
@@ -149,7 +147,6 @@
       </section>
     </section>
 
-    <!-- Contact section -->
     <section id="contact" class="container" style="padding:60px 20px;">
       <h1>GET IN TOUCH</h1>
       <form id="contact-form" class="contact-card" onsubmit="return false;">
@@ -190,10 +187,8 @@
   <p>© <span id="year"></span> — Karl Ybring</p>
   </footer>
 
-  <!-- EmailJS SDK (browser) - replace YOUR_PUBLIC_KEY below with your EmailJS public key -->
   <script type="text/javascript" src="https://cdn.emailjs.com/sdk/3.2.0/email.min.js"></script>
   <script>
-    // Initialize EmailJS if loaded. Replace with your actual public key (user_xxx...)
     try {
       if(window.emailjs && emailjs.init) {
         emailjs.init('gUXxwoVUfq7pdLYGq');
@@ -202,7 +197,7 @@
 
     import emailjs from '@emailjs/browser';
 
-emailjs.init('gUXxwoVUfq7pdLYGq'); // din public key
+emailjs.init('gUXxwoVUfq7pdLYGq');
 
 emailjs.send('service_ms33alm','template_atttpp7',{
   from_name: 'Test',

@@ -1,80 +1,71 @@
 :root {
 	--bg: #ffffff;
-	--header-offset: 10px; /* change this to adjust how far sections sit below the header when jumped to */
+	--header-offset: 10px;
 	--card: #ffffff;
-	--muted: #6b7280; /* gray-500 */
-	--accent: #7c3aed; /* purple */
-	--text: #111827; /* gray-900 */
-	--header-color: #111; /* headings */
-	--para-color: #333; /* paragraph text */
+	--muted: #6b7280; 
+	--accent: #7c3aed; 
+	--text: #111827; 
+	--header-color: #111; 
+	--para-color: #333; 
 	--font-heading: 'Source Sans 3', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 	--font-sans: 'Source Sans 3', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 }
 
-/* Box sizing */
 * {
 	box-sizing: border-box;
 }
 
-/* Page base */
 body {
 	margin: 0;
 	font-family: var(--font-sans);
-	font-weight: 500; /* use Source Sans 3 at 500 for body text */
+	font-weight: 500;
 	background: var(--bg);
 	color: var(--para-color);
 	line-height: 1.5;
 }
 
-/* reserve space for the fixed header so content isn't hidden underneath */
-/* reduced from 72px to 64px to match slimmer header */
 body { padding-top: 64px; }
 
-/* ensure html/body fill the viewport and use the SVG as the page background */
 html, body { height: 100%; }
 body { min-height: 100vh; }
 body {
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center top;
-	background-color: #ffffff; /* fallback white */
+	background-color: #ffffff;
 }
 
-/* Heading styles using the bulkier display font */
 h2, h3 {
 	font-family: var(--font-heading);
-	font-weight: 600; /* increased weight for headings */
-	font-size: 3rem; /* h2 */
+	font-weight: 600; 
+	font-size: 3rem; 
 	margin: 0 0 0.5rem 0;
 	color: var(--header-color);
 	letter-spacing: 1px;
 }
 h1{
 	font-family: var(--font-heading);
-	font-weight: 700; /* headings kept heavier for contrast */
+	font-weight: 700; 
 	letter-spacing: 2px;
 	margin: 0 0 0.5rem 0;
 	color: var(--header-color);
 }
 
-/* Centered content container */
 .container {
 	max-width: 1100px;
 	margin: 0 auto;
 	padding: 0 28px;
 }
 
-/* Header / navbar */
 .site-header {
 	background: #ffffff;
 	color: var(--text);
-	position: fixed; /* header locked to viewport */
+	position: fixed; 
 	top: 0;
 	left: 0;
 	right: 0;
 	z-index: 1000;
 	box-shadow: 0 6px 20px rgba(16, 24, 40, 0.06);
-	/* slimmer header: reduced vertical & horizontal padding */
 	padding: 0.8rem 3rem;
 
 }
@@ -82,7 +73,6 @@ h1{
 .nav {
 	display: flex;
 	align-items: center;
-	/* reduced nav padding so header is visually tighter */
 	padding: 8px 0;
 }
 
@@ -93,7 +83,6 @@ h1{
 	display: block;
 }
 
-/* Circular avatar in the top-left of the header */
 .nav-avatar {
 	width: 44px;
 	height: 44px;
@@ -104,7 +93,6 @@ h1{
 }
 .nav-left .logo { margin-left: 12px; }
 
-/* Layout helpers for the header navigation */
 .nav-left {
 	display: flex;
  	align-items: center;
@@ -117,7 +105,7 @@ h1{
  	padding: 0;
  	display: flex;
  	gap: 30px;
- 	margin-left: auto; /* push the menu to the right */
+ 	margin-left: auto;
  	align-items: center;
 }
 
@@ -127,7 +115,6 @@ h1{
  	transition: color 200ms ease;
 }
 
-/* Make nav links and logo visually heavier */
 .nav ul li a {
 	font-weight: 600;
 	font-size: 1.1rem;
@@ -144,9 +131,8 @@ h1{
 	cursor: pointer;
 }
 
-/* Hamburger / mobile nav toggle */
 .nav-toggle{
-	display: none; /* shown on small screens via media query */
+	display: none;
 	background: transparent;
 	border: none;
 	margin-left: auto;
@@ -173,7 +159,6 @@ h1{
 .nav-toggle .hamburger::before{ top: -7px; }
 .nav-toggle .hamburger::after{ top: 7px; }
 
-/* Mobile menu dropdown styles */
 .nav ul.mobile-open{
 	display: block;
 	position: absolute;
@@ -189,7 +174,6 @@ h1{
 .nav ul.mobile-open li{ display: block; padding: 8px 0; }
 .nav ul.mobile-open li a{ display: block; }
 
-/* hover: purple accent on logo and nav links */
 .nav ul li a:hover,
 .logo:hover {
     color: var(--accent);
@@ -201,32 +185,28 @@ h1{
   justify-content: space-between;
 }
 
-/* Hero / top section */
  .hero {
  	position: relative;
  	min-height: 93vh;
  	display: flex;
  	align-items: center;
- 	/* use SVG as background; ensure white shows through transparent areas */
 	background-image: url('../assets/trianglify-lowres.png');
-	background-size: cover; /* always cover the hero element */
+	background-size: cover; 
 	background-repeat: no-repeat;
-	background-position: center center; /* center the image so edges are filled on small devices */
+	background-position: center center; 
 	width: 100%;
- 	background-color: #ffffff; /* explicit white fallback */
+ 	background-color: #ffffff;
  	padding: 28px 0;
  }
 
- /* overlay to improve text contrast over the SVG */
+
  .hero::before {
-     /* overlay removed so white backgrounds remain white */
      content: '';
      position: absolute;
      inset: 0;
      background: none;
      pointer-events: none;
  }
-
 .hero-inner {
 	display: flex;
 	gap: 48px;
@@ -234,20 +214,18 @@ h1{
 	max-width: 1100px;
 	margin: 0 auto;
 	padding: 40px 28px;
-	justify-content: center; /* center content horizontally */
+	justify-content: center;
 }
 
 .hero-content {
 	max-width: 640px;
 	flex: 1;
-	/* center the heading, lead and CTA consistently */
 	text-align: center;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 }
 
-/* Larger, more prominent hero typography */
 .hero .hero-content h1 {
 	font-size: clamp(2rem, 5.5vw, 3.6rem);
 	line-height: 1.05;
@@ -284,7 +262,6 @@ h1{
 	font-family: Inter, "Segoe UI", Arial, sans-serif;
 }
 
-/* Social icon rail */
 .social-bar {
  	position: absolute;
  	left: 18px;
@@ -303,31 +280,27 @@ h1{
  	width: 56px;
  	height: 56px;
  	background: var(--card);
- 	color: #000; /* icons are black by default */
+ 	color: #000; 
  	border-radius: 10px;
  	align-items: center;
  	justify-content: center;
  	text-decoration: none;
  	box-shadow: 0 8px 22px rgba(2, 6, 23, 0.45);
- 	transition: color 180ms ease, transform 180ms ease; /* smooth color + lift */
+ 	transition: color 180ms ease, transform 180ms ease; 
 }
 
 .social-bar .icon svg {
  	opacity: 0.98;
  	width: 28px;
  	height: 28px;
- 	/* make SVG follow the current color */
  	fill: currentColor;
  	stroke: none;
 }
-
-/* Hover: icons become accent (purple) and lift slightly */
 .social-bar .icon:hover {
 	color: var(--accent);
 	transform: translateY(-1px);
 }
 .site-header.sticky {
-	/* keep header opaque when scrolled */
 	background: #ffffff;
 	backdrop-filter: none;
 	box-shadow: 0 6px 18px rgba(2, 6, 23, 0.12);
@@ -340,13 +313,12 @@ h1{
 	bottom: 20px;
 	color: var(--muted);
 	font-size: 22px;
-	pointer-events: none; /* decorative only */
+	pointer-events: none;
 	will-change: transform, opacity;
 	opacity: 0.98;
 	animation: scroll-bounce 1.8s cubic-bezier(.2,.8,.2,1) infinite;
 }
 
-/* keep inline SVG arrow the same size as the glyph (1em) and use currentColor */
 .scroll-indicator .scroll-arrow { width: 1em; height: 1em; display: inline-block; }
 .scroll-indicator .scroll-arrow path { stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 
@@ -355,20 +327,16 @@ h1{
 	50% { transform: translateX(-50%) translateY(12px); opacity: 0.6; }
 	100% { transform: translateX(-50%) translateY(0); opacity: 0.98; }
 }
-
-/* Respect users who prefer reduced motion */
 @media (prefers-reduced-motion: reduce) {
 	.scroll-indicator { animation: none; }
 }
-
-/* (scroll indicator animation defined earlier) */
 
 .btn {
 	background: var(--accent);
 	color: white;
 	border-radius: 0px;
 	text-decoration: none;
-	display: inline-block; /* ensure transforms animate smoothly */
+	display: inline-block; 
 	align-items: center;
 	font-size: 1.5rem;
 	font-weight: 600;
@@ -384,7 +352,6 @@ h1{
 	filter: brightness(0.98);
 }
 
-/* simple hover uplift: move button up slightly on hover/focus */
 .btn:hover,
 .btn:focus,
 .btn:focus-visible {
@@ -401,16 +368,14 @@ h1{
 	.btn:hover, .btn:focus, .btn-sm:hover, .btn-sm:focus { transform: none; }
 }
 
-/* Center the primary CTA inside the hero (horizontal center of viewport).
-   It sits above the social rail (higher z-index). On small screens it returns to normal flow. */
 .hero .btn {
-	/* keep the CTA in normal flow so it sits centered under the lead text */
+
 	display: inline-block;
 	margin-top: 18px;
 	padding: 10px 60px;
 	border-radius: 4px;
 	position: relative;
-	z-index: 90; /* ensure it's above the social rail if overlapping */
+	z-index: 90;
 }
 
 @media (max-width: 800px) {
@@ -424,10 +389,8 @@ h1{
 
 .card-grid {
 	display: grid;
-	grid-template-columns: 1fr; /* single column by default; cards handle their internal layout */
+	grid-template-columns: 1fr;
 	gap: 18px;
-
-/* Contact status inline message */
 .contact-status{
 	margin-top:10px;
 	font-size:0.95rem;
@@ -450,34 +413,32 @@ h1{
 }
 
 
-/* Project two-column grid similar to About */
-
 .project-grid {
 	display: grid;
-	grid-template-columns: 1fr 360px; /* wide left column for info, narrow right column for title/links */
-	gap: 36px; /* increased gap to give right column more breathing room */
+	grid-template-columns: 1fr 360px;
+	gap: 36px; 
 	align-items: start;
-	max-width: 1100px; /* match About section for symmetry */
+	max-width: 1100px; 
 	margin: 0 auto;
-	padding: 24px 0; /* remove horizontal padding so column paddings control spacing */
-	position: relative; /* enable centered divider pseudo-element */
+	padding: 24px 0; 
+	position: relative;
 }
 .proj-left {
-	padding: 18px; /* match About column padding */
-	padding-top: 0; /* normalize so heading aligns with right column */
+	padding: 18px; 
+	padding-top: 0; 
 }
 .proj-left h3 { margin: 0 0 12px 0; font-size: 1.05rem; font-weight: 700; }
 .proj-right {
 	text-align: left;
-	padding: 18px; /* match About column padding */
-	padding-top: 0; /* normalize so heading aligns with left column */
+	padding: 18px;
+	padding-top: 0; 
 }
 .project-desc p, .proj-left p { margin: 0 0 12px 0; color: var(--para-color); }
 .proj-right h3 { margin: 0 0 12px 0; font-size: 1.05rem; font-weight: 700; }
 
 .card-media .project-screenshot {
 	width: 100%;
-	aspect-ratio: 16 / 10; /* laptop-like aspect */
+	aspect-ratio: 16 / 10;
 	object-fit: cover;
 	display: block;
 	border-radius: 14px;
@@ -485,7 +446,6 @@ h1{
 	border: 2px solid rgba(2,6,23,0.06);
 }
 
-/* Small button styles used inside project cards for Source / Live links */
 .btn-sm {
 	display: inline-block;
 	padding: 8px 12px;
@@ -546,7 +506,6 @@ textarea {
 	color: var(--para-color);
 }
 
-/* Contact form card to visually match project/skill cards */
 .contact-card {
 	width: 100%;
 	max-width: 520px;
@@ -566,7 +525,7 @@ textarea {
 	align-items: center;
 	background: #f3f2f6;
 	padding: 12px 14px;
-	border-radius: 5px; /* pill */
+	border-radius: 5px;
 }
 .input-icon{ color: rgba(0,0,0,0.35); display:inline-flex; align-items:center; justify-content:center; width:28px; }
 .input-row input, .input-row textarea{ background: transparent; border: none; outline: none; font-size:0.95rem; color:var(--para-color); width:100%; }
@@ -605,9 +564,6 @@ textarea {
 		align-items: center;
 		text-align: center;
 	}
-
-	/* make sure the hero inner area uses the full width on small screens so the
-	   background image is visible to the edges and content sits centered */
 	.hero-inner, .container {
 		width: 100%;
 		max-width: 100%;
@@ -615,7 +571,6 @@ textarea {
 		padding-right: 18px;
 	}
 
-			/* Stack card media above body on small screens */
 			.card { flex-direction: column; min-height: auto; }
 			.card-media { flex: 0 0 auto; width: 100%; padding: 18px; }
 			.card-body { flex: 1 1 auto; padding: 12px; }
@@ -624,24 +579,18 @@ textarea {
 	.hero-content {
 		text-align: center;
 	}
-
-	/* ensure headline and primary CTA are centered and don't hug the edges */
 	.hero .hero-content h1 { text-align: center; margin-left: 0; margin-right: 0; }
 	.hero .btn { margin-left: auto; margin-right: auto; }
 
 	.social-bar {
 		left: 12px;
-		/* place the social rail near the bottom-left on small screens so it doesn't
-		   overlap the hero headline / CTA */
 		top: auto;
 		bottom: 16px;
 		transform: none;
-		flex-direction: row; /* show icons horizontally on mobile */
+		flex-direction: row;
 		gap: 10px;
 		padding: 8px;
 	}
-
-	/* slightly smaller icon blocks on mobile so they don't visually dominate */
 	.social-bar .icon {
 		width: 48px;
 		height: 48px;
@@ -653,7 +602,6 @@ textarea {
 	}
 }
 
-/* Center About, Projects and Contact content like the hero */
 section#about,
 section#projects,
 section#contact {
@@ -664,17 +612,15 @@ section#contact {
 	gap: 18px;
 }
 
-/* Ensure About fills the viewport (minus the fixed header) so Projects stays below the fold */
 section#about {
 	min-height: calc(100vh - 72px);
-	padding-top: 28px; /* small breathing room below the header */
+	padding-top: 28px; 
 	box-sizing: border-box;
 }
 
-/* About split layout */
 .about-grid {
 	display: grid;
-	grid-template-columns: 1fr 1fr; /* equal-width columns */
+	grid-template-columns: 1fr 1fr;
 	gap: 32px;
 	align-items: start;
 	width: 100%;
@@ -686,7 +632,7 @@ section#about {
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
-	padding: 18px; /* match right column so headings align */
+	padding: 18px;
 }
 .about-right {
 	text-align: left;
@@ -698,7 +644,6 @@ section#about {
 	border-radius: 8px;
 }
 
-/* Links inside the about area use the accent color */
 .about-left a, .about-right a {
 	color: var(--accent);
 	text-decoration: none;
@@ -727,23 +672,17 @@ section#about {
 }
 
 @media (max-width: 880px) {
-	/* Use a compact two-column grid on narrow screens so the left/right
-	   information for each project stays visually paired. For very small
-	   phones we fall back to a single column to preserve readability. */
 	.project-grid {
-		grid-template-columns: 1fr 1fr; /* left and right side-by-side */
+		grid-template-columns: 1fr 1fr;
 		gap: 12px;
 		align-items: start;
 		padding: 12px 0;
 	}
-
-	/* Tidy the card visuals on small screens so each project reads as a
-	   single grouped unit */
 	.card {
 		padding: 18px;
 		border-radius: 10px;
 		background: rgba(255,255,255,0.02);
-		border: none; /* no border here so iPad/tablets remain borderless */
+		border: none; 
 		box-shadow: none;
 	}
 
@@ -754,25 +693,21 @@ section#about {
 	.proj-right {
 		text-align: left;
 		padding-left: 14px;
-		border-left: 1px solid rgba(2,6,23,0.04); /* subtle separator */
+		border-left: 1px solid rgba(2,6,23,0.04);
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
 	}
 
 	.proj-right h3 { margin-bottom: 8px; }
-
-	/* Hide the vertical center divider used on wide layouts */
 	.project-grid::before { display: none; }
 }
 
 @media (max-width: 520px) {
-	/* Very small phones: stack vertically for legibility */
 	.project-grid { grid-template-columns: 1fr; }
 	.proj-right { text-align: center; border-left: none; padding-left: 0; }
 	.proj-left, .proj-right { padding: 12px; }
 
-	/* Show subtle borders only on very small screens where items stack */
 	.card {
 		border: 1px solid rgba(2,6,23,0.06);
 		border-radius: 10px;
@@ -782,13 +717,6 @@ section#about {
 	.card + .card { margin-top: 14px; }
 }
 
-/* iOS-only: show subtle card borders / separators when content stacks vertically
-   This targets WebKit-based touch browsers (iPhone/iPad Safari) and only applies
-   on very small screens where the project layout is stacked vertically. */
-/* iOS fallback preserved but not required: modern Safari will respect the rules above */
-
-/* Mobile-only small divider under the Live demo / Source buttons to match
-	 the subtle divider used elsewhere. Appears when projects are stacked. */
 @media (max-width: 880px) {
 	.proj-right p {
 		position: relative;
@@ -797,23 +725,20 @@ section#about {
 	.proj-right p::after{
 		content: "";
 		display: block;
-		width: 8rem; /* longer on mobile */
-		height: 2px;  /* slightly thicker but keep subtle */
-		background: rgba(2,6,23,0.07); /* keep same gray tone */
+		width: 8rem;
+		height: 2px;  
+		background: rgba(2,6,23,0.07); 
 		margin: 12px auto 0;
 		border-radius: 2px;
 		opacity: 1;
 	}
 }
 
-/* Make headings align and look consistent */
 .about-left h3, .about-right h3 {
 	margin: 0 0 12px 0;
 	font-size: 1.05rem;
 	font-weight: 700;
 }
-
-/* Divider between the two project columns (match About's divider) */
 .project-grid::before {
 	content: '';
 	position: absolute;
@@ -831,21 +756,18 @@ section#about {
     .project-grid::before { display: none; }
 }
 
-/* Keep lists and project cards readable by constraining width and centering them */
 section#about ul,
 section#projects .card-grid {
 	max-width: 760px;
 	width: 100%;
 	margin: 0 auto;
-	text-align: left; /* keep list items left-aligned for readability */
+	text-align: left;
 }
 
-/* Make anchor targets sit below the fixed header by default; controlled by --header-offset */
 section[id], h1[id], [id] {
 	scroll-margin-top: calc(var(--header-offset) + 12px);
 }
 
-/* Divider between the two about columns (only inside the about section) */
 .about-grid::before {
 	content: '';
 	position: absolute;
@@ -863,13 +785,12 @@ section[id], h1[id], [id] {
 	.about-grid::before { display: none; }
 }
 
-/* Thin purple underline for the About heading (matches button accent) */
 section#about > h2 {
 	position: relative;
 	padding-bottom: 8px;
 	margin-bottom: 12px;
 }
-/* Small underline for Projects heading to visually match About */
+
 section#projects > h2 {
 	position: relative;
 	padding-bottom: 8px;
@@ -887,14 +808,13 @@ section#projects > h2::after {
 section#about > h2::after {
 	content: "";
 	display: block;
-	width: 5.5rem; /* small centered line */
+	width: 5.5rem;
 	height: 4px;
 	background: var(--accent);
 	margin: 6px auto 0;
 	border-radius: 2px;
 }
 
-/* Contact heading should match About/Projects */
 section#contact > h1 {
 	position: relative;
 	padding-bottom: 8px;
